@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+    <link rel="shortcut icon" href="#">
+    <title>Chitter API Frontend Challenge</title>
+  </head>
+
+  <body>
+
+    <h1>Chitter</h1>
+    <h2>Peeps:</h2>
+    <button onclick="showPeeps()">Show Peeps</button>
+    <div id="toDislay">
+      <div id="peepsList"></div>
+    </div>
+
+    <h2> Sign up below:</h2>
+    <input id="username"/>
+    <input id="password"/>
+    <button id="signUpButton">Sign up</button>
+
+    <div id="signUpNotification"></div>
+
+    <h2> Sign in below:</h2>
+    <input id="prevUsername"/>
+    <input id="prevPassword"/>
+    <button id="signInButton">Sign in</button>
+
+    <div id="signInNotification"></div>
+
+    <h2> Post a new peep:</h2>
+    <input id="newPeep"/>
+    <button id="postPeep">Post</button>
+
+    <div id="peepPostNotification"></div>
+
+    <script src="./src/app.js"></script>
+  </body>
+</html>
