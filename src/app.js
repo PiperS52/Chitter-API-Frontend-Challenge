@@ -90,7 +90,7 @@ document.getElementById("postPeep").onclick = function() {
       'Content-Type': 'application/json',
       'Authorization': `Token token=${sessionStorage.getItem('session_key')}`
     },
-    body: JSON.stringify( { "peep": {"user_id": id, "body": newPeep}} )
+    body: JSON.stringify( { "peep": {"user_id":id, "body":newPeep}} )
   })
   .then(response => {
     if (response.ok) {
@@ -105,9 +105,7 @@ document.getElementById("postPeep").onclick = function() {
   });
 }
 
-// function add(){
-//   x = 9
-// }
+
 //
 // console.log(x)
 // error throwing on line 87
