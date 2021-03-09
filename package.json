@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/PiperS52/Chitter-API-Frontend-Challenge/issues"
   },
-  "homepage": "https://github.com/PiperS52/Chitter-API-Frontend-Challenge#readme"
+  "homepage": "https://github.com/PiperS52/Chitter-API-Frontend-Challenge#readme",
+  "devDependencies": {
+    "cypress": "^6.5.0"
+  }
 }

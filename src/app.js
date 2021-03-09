@@ -49,6 +49,7 @@ document.getElementById("signUpButton").onclick = function() {
   });
 };
 
+
 document.getElementById("signInButton").onclick = function() {
   const prevUser = document.getElementById("prevUsername").value;
   const prevPassword = document.getElementById("prevPassword").value;
@@ -57,8 +58,9 @@ document.getElementById("signInButton").onclick = function() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify( { "session": {"handle":prevUser, "password":prevPassword}} )
   })
+  .then(res => res.json())
   .then(response => {
-    if (response.ok) {
+    if (response.user_id) {
       // console.log(response.user_id)
       // console.log(response.session_key)
       $('#signInNotification').text('You are signed in');
@@ -68,16 +70,16 @@ document.getElementById("signInButton").onclick = function() {
     }
   })
   .catch(error => {
-    console.log(error);
+    console.log(prevUser);
   });
 };
 
 function saveSessionDetails(response, username){
-  // console.log(response)
   sessionStorage.setItem('username', username);
   sessionStorage.setItem('id', response.user_id);
   sessionStorage.setItem('session_key', response.session_key);
   console.log("saved - success!");
+  console.log(response.session_key);
 }
 
 document.getElementById("postPeep").onclick = function() {
@@ -90,11 +92,12 @@ document.getElementById("postPeep").onclick = function() {
       'Content-Type': 'application/json',
       'Authorization': `Token token=${sessionStorage.getItem('session_key')}`
     },
-    body: JSON.stringify( { "peep": {"user_id":id, "body":newPeep}} )
+    body: JSON.stringify( { "peep": {"user_id":sessionStorage.getItem('id'), "body":newPeep}} )
   })
+  .then(res => res.json())
   .then(response => {
-    if (response.ok) {
-      console.log("hello");
+    if (response.body === newPeep) {
+      console.log('Successful posting', response);
       $('#peepPostNotification').text('Peep successfully posted!')
     } else {
       $('#peepPostNotification').text('Unsuccessful - please try posting again')
@@ -106,6 +109,5 @@ document.getElementById("postPeep").onclick = function() {
 }
 
 
-//
-// console.log(x)
-// error throwing on line 87
+
+// kay: user_id: 34
